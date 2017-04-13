@@ -1,0 +1,15 @@
+use_frameworks!
+
+target 'MyGitHub' do
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'RxAlamofire'
+    pod 'RxDataSources', '~> 1.0'
+end
+
+
+target 'MyGitHubTests' do
+    pod 'RxSwift'
+    pod 'RxCocoa'
+end
+

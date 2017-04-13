@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="REc-Zs-fUN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Repo List View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="RepoListViewController" id="BYZ-38-t0r" customClass="RepoListViewController" customModule="MyGitHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zkz-NX-3OA">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoI-xA-pTY">
+                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7cy-JP-3Wv">
+                                        <rect key="frame" x="56.5" y="56.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="8dB-4v-IBE"/>
+                                    <constraint firstItem="7cy-JP-3Wv" firstAttribute="centerY" secondItem="xoI-xA-pTY" secondAttribute="centerY" id="DTx-dq-GAN"/>
+                                    <constraint firstAttribute="height" constant="150" id="WDP-bM-UXL"/>
+                                    <constraint firstItem="7cy-JP-3Wv" firstAttribute="centerX" secondItem="xoI-xA-pTY" secondAttribute="centerX" id="YFT-HD-bRG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Zkz-NX-3OA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NQ1-q1-hYM"/>
+                            <constraint firstItem="xoI-xA-pTY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OOi-vg-Dcf"/>
+                            <constraint firstItem="Zkz-NX-3OA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b2m-wu-eSL"/>
+                            <constraint firstItem="Zkz-NX-3OA" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="mgR-sD-xcb"/>
+                            <constraint firstItem="xoI-xA-pTY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nlA-2d-J0Z"/>
+                            <constraint firstItem="Zkz-NX-3OA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="xd2-xG-BHu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingView" destination="xoI-xA-pTY" id="Xxg-kS-h4a"/>
+                        <outlet property="mTableView" destination="Zkz-NX-3OA" id="j39-p3-u3D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-487" y="674"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rmB-9K-Nz5">
+            <objects>
+                <navigationController id="REc-Zs-fUN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SQc-Nv-pBg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xu1-Y4-fqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="-16"/>
+        </scene>
+    </scenes>
+</document>
