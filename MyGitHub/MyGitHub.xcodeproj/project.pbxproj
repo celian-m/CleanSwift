@@ -31,6 +31,8 @@
 		B09A2D511E9F735100C517CE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A2D501E9F735100C517CE /* Errors.swift */; };
 		B09A2D541E9F7C8D00C517CE /* RepositoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A2D521E9F7C8D00C517CE /* RepositoryCollectionViewCell.swift */; };
 		B09A2D551E9F7C8D00C517CE /* RepositoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09A2D531E9F7C8D00C517CE /* RepositoryCollectionViewCell.xib */; };
+		B0AE5C551E9FDA37002A7D05 /* DataRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE5C541E9FDA37002A7D05 /* DataRepositoryInterface.swift */; };
+		B0AE5C571E9FDA52002A7D05 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE5C561E9FDA52002A7D05 /* CoreDataRepository.swift */; };
 		FFFFC78167E62AC92E0A0AC7 /* Pods_MyGitHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505B7F8E98BACCF2C0558F51 /* Pods_MyGitHubTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		B09A2D501E9F735100C517CE /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		B09A2D521E9F7C8D00C517CE /* RepositoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryCollectionViewCell.swift; path = Cell/RepositoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		B09A2D531E9F7C8D00C517CE /* RepositoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RepositoryCollectionViewCell.xib; path = Cell/RepositoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		B0AE5C541E9FDA37002A7D05 /* DataRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRepositoryInterface.swift; path = Repositories/DataRepositoryInterface.swift; sourceTree = "<group>"; };
+		B0AE5C561E9FDA52002A7D05 /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		B18FC01C7D93D4D058AD9D15 /* Pods-MyGitHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyGitHubTests/Pods-MyGitHubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB472A9BF1087366EB6C19AD /* Pods-MyGitHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyGitHub/Pods-MyGitHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				B09A2D4E1E9F69F300C517CE /* GitHubDataRepository.swift */,
+				B0AE5C541E9FDA37002A7D05 /* DataRepositoryInterface.swift */,
+				B0AE5C561E9FDA52002A7D05 /* CoreDataRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -509,12 +515,14 @@
 				B09A2D001E9E759B00C517CE /* ViewController.swift in Sources */,
 				B09A2D341E9E769B00C517CE /* Repository+CoreDataClass.swift in Sources */,
 				B09A2D351E9E769B00C517CE /* Repository+CoreDataProperties.swift in Sources */,
+				B0AE5C571E9FDA52002A7D05 /* CoreDataRepository.swift in Sources */,
 				B09A2D461E9E7D3E00C517CE /* Presenter.swift in Sources */,
 				B09A2D3D1E9E78C500C517CE /* RepoListPresenter.swift in Sources */,
 				B09A2CFE1E9E759B00C517CE /* AppDelegate.swift in Sources */,
 				B09A2D3B1E9E78AB00C517CE /* RepoListViewController.swift in Sources */,
 				B09A2D3F1E9E78DA00C517CE /* RepoListRouter.swift in Sources */,
 				B09A2D061E9E759B00C517CE /* MyGitHub.xcdatamodeld in Sources */,
+				B0AE5C551E9FDA37002A7D05 /* DataRepositoryInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

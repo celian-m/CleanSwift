@@ -14,12 +14,20 @@ import RxSwift
 
 struct RepoListInteractor {
     
-    let repository : GitHubDataRepositoryInterface
-    
+    let repository : DataRepository
+    let localStorageRepositoty = CoreDataRepository()
     func loadData(username : String) ->  Observable<[RepositoryEntity]> {
-        return repository.loadData(username).map({ (arrayOfJson) -> [RepositoryEntity] in
-            return try RepositoryEntity.from(listJson: arrayOfJson)
-        });
+        return repository.loadData(username).do(onNext: { (listRepo) in
+                self.localStorageRepositoty.storeData(elements: listRepo)
+        }).catchError({ (error) -> Observable<[RepositoryEntity]> in
+            print(error)
+            
+            return self.localStorageRepositoty.loadData(username).do(onNext: { (repositories) in
+                if (repositories.count == 0){
+                    throw error
+                }
+            })
+        })
     }
 }
 

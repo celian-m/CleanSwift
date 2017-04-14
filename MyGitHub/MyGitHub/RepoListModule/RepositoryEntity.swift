@@ -33,7 +33,7 @@ struct RepositoryEntity : JSONSerializable {
         guard let json = json as? [String : Any],
             let name = json["name"] as? String,
             let urlStr = json["url"] as? String,
-            let url = URL(string : urlStr),
+          //  let url = URL(string : urlStr),
             let ownerParams = json["owner"] as? [String : Any],
             let ownerName = ownerParams["login"] as? String
             else {
@@ -42,13 +42,13 @@ struct RepositoryEntity : JSONSerializable {
         
         let description = json["description"] as? String
         let language = json["language"] as? String
-        return RepositoryEntity(name: name, description: description , url: url, language: language, owner : ownerName)
+        return RepositoryEntity(name: name, description: description , language: language, owner : ownerName)
         
     }
     
     let name : String
     let description : String?
-    let url : URL
+  //  let url : URL
     let language : String?
     let owner : String
     

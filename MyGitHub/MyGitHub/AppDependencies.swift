@@ -8,9 +8,14 @@
 
 import Foundation
 import UIKit
+import RxAlamofire
+import Alamofire
+
 
 class AppDependencies {
   // var listWireframe = ListWireframe()
+    
+    
     
     init() {
         configureDependencies()
@@ -21,6 +26,6 @@ class AppDependencies {
     }
     
     func configureDependencies() {
-        
+       
     }
 }

@@ -63,10 +63,11 @@ class RepoListPresenter {
     func reloadData(_ username : String) -> Observable<RepoListModel> {
         return self.interactor.loadData(username: username)
             .map({ repositories -> RepoListModel in
-
                 return RepoListModel(controllerName : username, isLoading: false, repoList : repositories)
+            }).catchError({ (error) -> Observable<RepoListModel> in
+                return Observable.just(RepoListModel(controllerName : username, isLoading : false, repoList : []))
             })
-            .catchErrorJustReturn(RepoListModel(controllerName : username, isLoading : false, repoList : []))
+        
         
     }
     
