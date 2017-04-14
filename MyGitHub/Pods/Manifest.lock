@@ -10,21 +10,29 @@ PODS:
   - RxDataSources (1.0.3):
     - RxCocoa (~> 3.0)
     - RxSwift (~> 3.0)
+  - RxGesture (1.0.0):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
   - RxSwift (3.3.1)
+  - Swinject (2.0.0)
 
 DEPENDENCIES:
   - RxAlamofire
   - RxCocoa
   - RxDataSources (~> 1.0)
+  - RxGesture
   - RxSwift
+  - Swinject (~> 2.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   RxAlamofire: bc53604b29fd2d220cfaa490c736cc4500819f34
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
   RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
+  RxGesture: df17ca8be513640294c544b3165875e91de665ec
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
 
-PODFILE CHECKSUM: 81412941fc0dde35cac4ce46a32ee82e6215933f
+PODFILE CHECKSUM: f096c12eb31ee3218c1100279d124ba84efb7ce1
 
 COCOAPODS: 1.0.0

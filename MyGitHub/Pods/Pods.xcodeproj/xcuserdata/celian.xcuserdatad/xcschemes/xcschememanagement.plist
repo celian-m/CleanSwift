@@ -24,7 +24,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxCocoa.xcscheme</key>
+		<key>RxCocoa-iOS10.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxCocoa-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,7 +39,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxSwift.xcscheme</key>
+		<key>RxGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift-iOS10.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Swinject.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,17 +62,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>205ABEDC5E3AC9716F906B6E0E960ABA</key>
+		<key>11E6ED8AC0B774686B94FAB01E28DE4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>461311DCB7A5C7ECEB5A6F8CFA4A341E</key>
+		<key>26B9AB85E57C27A8FF6E4EBED34794E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>673DAEC89A6C6DE00CD9DC73E351E176</key>
+		<key>6E8D1497CF46AD079D4FF8A2068FE203</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +82,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DC157637602448791910BC577896A35</key>
+		<key>84EAA18B1BE4495EAB38709F1AD3B045</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D084ABE5F89F250BB4143C444FFAEAE5</key>
+		<key>8CB1067B1E880833D1C47C01A08138F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF7861FC5ADB703A20B142F41C35F74A</key>
+		<key>91BB7D1E3E8D5CF73FDE6D03F5B6D5CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C24875F60C638FE9EE957A3C2AC590BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9C8FCFB3B664D51AA9E0A9B65FD952F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF42CA87D7332578B94AFC7C2F77D2E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC57BE405A12A38F1910D216CE060301</key>
 		<dict>
 			<key>primary</key>
 			<true/>

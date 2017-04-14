@@ -53,36 +53,43 @@ struct CoreDataCore {
 
 
 struct CoreDataRepository : LocalDataRepository {
-    func loadData(_ username: String) -> Observable<[RepositoryEntity]>  {
+    
+    let context = container.resolve(NSManagedObjectContext.self)!
+    
+    func loadData(_ username: String, error : Errors?) -> Observable<([RepositoryEntity], Errors?)>  {
         let results : NSFetchRequest<Repository> = Repository.fetchRequest()
        
         do {
            let repos =  try  CoreDataCore.sharedInstance.persistentContainer.viewContext.fetch(results)
            print(repos)
-            return Observable.just( repos.map({ (repository) -> RepositoryEntity in
-                return RepositoryEntity(name: repository.cName!, description: "CD", language: nil, owner: "")
-            }))
+            let entities = repos.map({ (repository) -> RepositoryEntity in
+                return RepositoryEntity(name: repository.cName!, description: repository.cDescription!, language: nil, owner: repository.cOwner!)
+            })
+            
+            return Observable.just((entities, error))
         } catch {
             print(error)
         }
-        return Observable.just([])
+        return Observable.just(([], Errors.NoError))
     }
     
     func storeData(elements: [RepositoryEntity]) {
         
         let results : NSFetchRequest<Repository> = Repository.fetchRequest()
-        let repos =  try? CoreDataCore.sharedInstance.persistentContainer.viewContext.fetch(results)
+        let repos =  try? context.fetch(results)
         
         for repo in repos ?? [] {
-            CoreDataCore.sharedInstance.persistentContainer.viewContext.delete(repo)
+            context.delete(repo)
         }
         
         for aRepo in elements {
             let entity = NSEntityDescription.insertNewObject(forEntityName: "Repository", into: CoreDataCore.sharedInstance.persistentContainer.viewContext) as! Repository
             entity.cName = aRepo.name
+            entity.cDescription = aRepo.description
+            entity.cOwner = aRepo.owner
         }
         
-       _ =  try? CoreDataCore.sharedInstance.persistentContainer.viewContext.save()
+       _ =  try? context.save()
         
     }
 }

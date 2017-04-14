@@ -16,17 +16,19 @@ struct RepoListInteractor {
     
     let repository : DataRepository
     let localStorageRepositoty = CoreDataRepository()
-    func loadData(username : String) ->  Observable<[RepositoryEntity]> {
-        return repository.loadData(username).do(onNext: { (listRepo) in
-                self.localStorageRepositoty.storeData(elements: listRepo)
-        }).catchError({ (error) -> Observable<[RepositoryEntity]> in
-            print(error)
+    func loadData(username : String) ->  Observable<([RepositoryEntity], Errors?)> {
+        return repository.loadData(username, error : nil)
+            .catchError({ (error) -> Observable<([RepositoryEntity], Errors?)> in
             
-            return self.localStorageRepositoty.loadData(username).do(onNext: { (repositories) in
-                if (repositories.count == 0){
-                    throw error
-                }
-            })
+            if let error = error as? Errors {
+                return self.localStorageRepositoty.loadData(username, error: error)
+            } else{
+                return self.localStorageRepositoty.loadData(username, error: Errors.BadWSReturn)
+            }
+        }).do(onNext: { (repos, error) in
+            if error == nil {
+                self.localStorageRepositoty.storeData(elements: repos)
+            }
         })
     }
 }

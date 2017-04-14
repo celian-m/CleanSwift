@@ -10,6 +10,8 @@ import Foundation
 
 
 enum Errors : Error {
+    case NoError
     case BadWSReturn
     case MissingDecodingParameter
+    case NoNetwork
 }

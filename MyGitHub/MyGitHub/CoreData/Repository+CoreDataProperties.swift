@@ -11,11 +11,13 @@ import CoreData
 
 
 extension Repository {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Repository> {
         return NSFetchRequest<Repository>(entityName: "Repository")
     }
-
+    
     @NSManaged public var cName: String?
-
+    @NSManaged public var cDescription: String?
+    @NSManaged public var cOwner: String?
+    
 }

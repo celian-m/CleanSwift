@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxGesture
 
 protocol RepoListViewControllerIntents {
     func intentLoadData() -> Observable<String>
@@ -23,8 +24,8 @@ class AutoAdjustedCollectionview: UICollectionView {
 
 class FlexibleCollectionViewFlowLayout : UICollectionViewFlowLayout {
     
-
-   
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,19 +37,28 @@ class RepoListViewController: ViewController, RepoListViewControllerIntents, UIC
     
     private let repoList = Variable<[RepositoryEntity]>([])
     private let refreshControl = UIRefreshControl()
+    var presenter : RepoListPresenter!
+    
     
     @IBOutlet private weak var mTableView: UITableView!
     @IBOutlet private weak var loadingView: UIView!
+    @IBOutlet private weak var errorLabel: UILabel!
     
+    var userName = Variable<String>("celian-m")
     
     func intentLoadData() -> Observable<String> {
         return Observable.just("celian-m")
     }
     
     func intentRefreshData() -> Observable<String> {
-        return refreshControl.rx.controlEvent(.valueChanged).map({ (_) -> String in
-            return "celian-m"
+        
+        
+        
+        let refreshIntent =  refreshControl.rx.controlEvent(.valueChanged).map({ (_) -> String in
+            return self.userName.value
         })
+        
+        return Observable.merge([refreshIntent, userName.asObservable()])
     }
     
     
@@ -58,7 +68,7 @@ class RepoListViewController: ViewController, RepoListViewControllerIntents, UIC
         super.viewDidLoad()
         self.presenter.attach()
         
-      //  self.mCollectionView.delegate = self
+        //  self.mCollectionView.delegate = self
         self.mTableView.alwaysBounceVertical = true
         let nib = UINib.init(nibName: "RepositoryCollectionViewCell", bundle: nil)
         self.mTableView.register(nib, forCellReuseIdentifier: "project")
@@ -67,11 +77,33 @@ class RepoListViewController: ViewController, RepoListViewControllerIntents, UIC
         _ = self.repoList.asObservable().bindTo(mTableView.rx.items(cellIdentifier: "project")) {
             index, model, cell in
             (cell as RepositoryCollectionViewCell).prepare(repository: model)
-        }.addDisposableTo(self.bag)
-
+            }.addDisposableTo(self.bag)
+        
         
         refreshControl.tintColor = UIColor.black
         self.mTableView.addSubview(refreshControl)
+        
+        
+//        let title = self.navigationController?.navigationItem.titleView
+//        
+//        
+        let gesture = mTableView.rx.tapGesture().subscribe(onNext: { (_) in
+            let controller = UIAlertController(title: "UserName", message: "Provide Username", preferredStyle: UIAlertControllerStyle.alert)
+            controller.addTextField(configurationHandler: { (field) in
+                field.placeholder = "username"
+            })
+            controller.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
+                self.userName.value = controller.textFields[0]?.text ?? ""
+            }))
+            controller.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
+                
+            }))
+            
+            self.present(controller, animated: true, completion: nil)
+            
+        })
+        
+        
         
     }
     
@@ -84,21 +116,30 @@ class RepoListViewController: ViewController, RepoListViewControllerIntents, UIC
     }
     
     func display(viewModel: RepoListModel) {
-        print("Render Model")
-        self.loadingView.isHidden = !viewModel.isLoading
-        self.repoList.value = viewModel.repoList
-  //      self.mCollectionView.collectionViewLayout.invalidateLayout()
+        print("Render Model \(viewModel.error)")
+        
+        self.loadingView.isHidden = !viewModel.isLoading!
+        self.repoList.value = viewModel.repoList!
+        
         self.title = viewModel.controllerName
-        if !viewModel.isLoading && self.refreshControl.isRefreshing {
+        if !((viewModel.isLoading)!) && self.refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
+        
+        switch viewModel.error {
+        case .NoNetwork:
+            self.errorLabel.text = "No Network"
+            break
+        default:
+            self.errorLabel.text = nil
+        }
     }
-
-
     
     
-    var presenter : RepoListPresenter!
     
-
-
+    
+    
+    
+    
+    
 }

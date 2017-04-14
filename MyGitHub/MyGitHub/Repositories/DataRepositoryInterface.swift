@@ -12,7 +12,7 @@ import RxAlamofire
 import Alamofire
 
 protocol DataRepository {
-    func loadData( _ username : String)  -> Observable<[RepositoryEntity]>
+    func loadData( _ username : String, error : Errors?)  -> Observable<([RepositoryEntity], Errors?)>
 }
 
 

@@ -15,30 +15,19 @@ import Alamofire
 
 
 struct GitHubDataRepository : DataRepository {
-    
-  //  let manager = SessionManager.default
-    
-    let manager: SessionManager = {
-        let configuration = URLSessionConfiguration.default
-        configuration.urlCache = nil
-        return SessionManager(configuration: configuration)
-    }()
-    
-    func loadData(_ username: String) -> Observable<[RepositoryEntity]> {
- //     manager.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        
+    let manager: SessionManager = container.resolve(SessionManager.self)!
+    func loadData(_ username: String, error : Errors?) -> Observable<([RepositoryEntity], Errors?)> {
+        if !Reachability.isConnectedToNetwork() {
+            return Observable.error(Errors.NoNetwork)
+        }
         
         return manager.rx.json(.get, URL(string: "https://api.github.com/users/\(username)/repos")!).map({ (json) -> [Any] in
-            
-            guard let array = json as? [Any] else {
-                throw Errors.BadWSReturn
-            }
-            print(array.count)
-            
+          
+            guard let array = json as? [Any] else { throw Errors.BadWSReturn }
             return array
-        }).map({ (arrayOfJson) -> [RepositoryEntity] in
+        }).map({ (arrayOfJson) -> ([RepositoryEntity], Errors?) in
             let entities = try RepositoryEntity.from(listJson: arrayOfJson)
-            return entities
+            return (entities, nil)
         })
     }
 }
