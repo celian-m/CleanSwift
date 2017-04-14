@@ -93,7 +93,7 @@ class RepoListViewController: ViewController, RepoListViewControllerIntents, UIC
                 field.placeholder = "username"
             })
             controller.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-                self.userName.value = controller.textFields[0]?.text ?? ""
+                self.userName.value = controller.textFields?[0].text ?? ""
             }))
             controller.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
                 
